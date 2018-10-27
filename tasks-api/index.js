@@ -2,6 +2,13 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 
+function meuJson() {
+    return (req, res, next) => {
+        console.log('Meu middlewere...')
+        next()
+    }
+}
+app.use(meuJson())
 app.use(bodyParser.json())
 
 app.get('/cliente', (req, res, next) => {
@@ -17,7 +24,6 @@ app.get('/cliente', (req, res, next) => {
             '}' +
         ']'
     )
-    next()
 })
 
 app.get('/cliente/:id', (req, res, next) => {
@@ -40,7 +46,6 @@ app.get('/cliente/:id', (req, res, next) => {
     res.status(200).send(
        strJson
     )
-    next()
 })
 
 app.post('/cliente', (req, res) => {
