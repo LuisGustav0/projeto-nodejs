@@ -1,11 +1,11 @@
 const express = require('express')
 
-const App = express()
+const app = express()
 
-App.get('/', (req, res) => {
+app.get('/', (req, res) => {
     res.status(200).send('Meu backend!')
 })
 
-App.listen(3000, () => {
+app.listen(3000, () => {
     console.log('Backend executando...')
 })
